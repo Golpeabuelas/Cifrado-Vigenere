@@ -1,8 +1,7 @@
-function Cifrar(event){
-    event.preventDefault();
+function Cifrar(mensaje){
 
     const Alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-    const Mensaje = document.getElementById('Mensaje').value.toString().toUpperCase();
+    const Mensaje = mensaje;
     const Clave = IgualarLongitudes(Mensaje, document.getElementById('ClaveCifrar').value).toUpperCase();
     
     let Cifrado = "";
@@ -29,14 +28,13 @@ function Cifrar(event){
         Cifrado = Cifrado + Alfabeto.charAt(Indice);
     }
 
-    document.getElementById('MostrarCifrado').value = Cifrado;
+    return Cifrado;
 }
 
-function Descifrar(event){
-    event.preventDefault();
+function Descifrar(mensaje){
     
     const Alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-    const Mensaje = document.getElementById('MensajeCifrado').value.toString().toUpperCase();
+    const Mensaje = mensaje;
     const Clave = IgualarLongitudes(Mensaje, document.getElementById('ClaveDescifrar').value).toUpperCase();
     
     let Cifrado = "";
@@ -63,7 +61,7 @@ function Descifrar(event){
         Cifrado = Cifrado + Alfabeto.charAt(Indice);
     }
 
-    document.getElementById('MostrarCifrado').value = Cifrado;
+    return Cifrado;
 }
 
 function IgualarLongitudes(mensaje, clave){
@@ -88,4 +86,32 @@ function IgualarLongitudes(mensaje, clave){
     }
 
     return Clave;
+}
+
+function CifrarMensaje(event){
+    event.preventDefault();
+
+    const Mensaje = document.getElementById('Mensaje').value.toString().toUpperCase();
+    const Palabras = Mensaje.split(" ");
+    let mensaje = "";
+
+    for(let i = 0; i < Palabras.length; i++){
+        mensaje = mensaje + Cifrar(Palabras[i]) + " ";
+    }
+
+    document.getElementById('MostrarCifrado').value = mensaje;
+}
+
+function DescifrarMensaje(event){
+    event.preventDefault();
+
+    const Mensaje = document.getElementById('MensajeCifrado').value.toString().toUpperCase();
+    const Palabras = Mensaje.split(" ");
+    let mensaje = "";
+
+    for(let i = 0; i < Palabras.length; i++){
+        mensaje = mensaje + Descifrar(Palabras[i]) + " ";
+    }
+
+    document.getElementById('MostrarCifrado').value = mensaje;
 }
