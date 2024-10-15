@@ -5,29 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cifrado Vigenere</title>
 
+    <link rel="stylesheet" href="styles.css">
     <script src="funcionalidad.js"></script>
 </head>
 <body>
-    <div class="Cifrando">
-        <form >
-            <input type="text" placeholder="Mensaje para cifrar" name="Mensajes" id="Mensaje" required>
-            <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" required>
-            <input type="submit" value="Cifrar" onclick="CifrarMensaje(event)">
-            <textarea name="Resultado" id="MostrarCifrado"></textarea>
-        </form>
+    <div class="Header">
+        <h1>Yu jav no forskin</h1>
     </div>
 
-    <div class="Demostracion">
+    <div class="Contenido">
+        <div class="Contenedor" id="Izquierda">
+            <div class="Cifrando">
+                <form >
+                    <input type="text" placeholder="Mensaje para cifrar" name="Mensajes" id="Mensaje" required>
+                    <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" required>
+                    <input type="submit" value="Cifrar" onclick="CifrarMensaje(event)">
+                </form>
+            </div>
         
+            
+        
+            <div class="Descifrando">
+                <form>
+                    <input type="text" placeholder="Mensaje para descifrar" id="MensajeCifrado" name="Mensajes" required>
+                    <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" required>
+                    <input type="submit" value="Descifrar" onclick="DescifrarMensaje(event)">
+                </form>
+            </div>
+        </div>
+        
+        <div class="Contenedor" id="Derecha">
+            <div class="Demostracion">
+                <textarea name="Resultado" id="MostrarCifrado"></textarea>
+            </div>
+        </div>
     </div>
-
-    <div class="Descifrando">
-        <form>
-            <input type="text" placeholder="Mensaje para descifrar" id="MensajeCifrado" name="Mensajes" required>
-            <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" required>
-            <input type="submit" value="Descifrar" onclick="DescifrarMensaje(event)">
-        </form>
-    </div>
-
 </body>
 </html>
