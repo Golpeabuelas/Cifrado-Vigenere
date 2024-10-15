@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado Vigenere</title>
+
+    <script src="funcionalidad.js"></script>
+</head>
+<body>
+    <div class="Cifrando">
+        <form >
+            <input type="text" placeholder="Mensaje para cifrar" name="Mensajes" id="Mensaje" required>
+            <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" required>
+            <input type="submit" value="Cifrar" onclick="Cifrar(event)">
+            <textarea name="Resultado" id="MostrarCifrado"></textarea>
+        </form>
+    </div>
+
+    <div class="Demostracion">
+        
+    </div>
+
+    <div class="Descifrando">
+        <form>
+            <input type="text" placeholder="Mensaje para descifrar" id="MensajeCifrado" name="Mensajes" required>
+            <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" required>
+            <input type="submit" value="Descifrar" onclick="Descifrar(event)">
+        </form>
+    </div>
+
+</body>
+</html>
