@@ -1,5 +1,4 @@
 function Cifrar(mensaje){
-
     const Alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
     const Mensaje = mensaje;
     const Clave = IgualarLongitudes(Mensaje, document.getElementById('ClaveCifrar').value).toUpperCase();
@@ -79,7 +78,7 @@ function IgualarLongitudes(mensaje, clave){
             } 
         }
 
-        if(auxiliar.length == Mensaje.length){
+        if(auxiliar.length == (Mensaje.length - 1)){
             Clave = auxiliar;
             break;
         } 
@@ -99,7 +98,11 @@ function CifrarMensaje(event){
         mensaje = mensaje + Cifrar(Palabras[i]) + " ";
     }
 
+    MostrarMatriz(Palabras[0], IgualarLongitudes(Mensaje, document.getElementById('ClaveCifrar').value).toUpperCase());
+
     document.getElementById('MostrarCifrado').value = mensaje;
+
+    
 }
 
 function DescifrarMensaje(event){
@@ -114,4 +117,80 @@ function DescifrarMensaje(event){
     }
 
     document.getElementById('MostrarCifrado').value = mensaje;
+}
+
+function MostrarMatriz(mensaje, clave){
+    const Mensaje = mensaje;
+    const Clave = clave;
+    let Filas = clave.length + 1;
+    let Columnas = mensaje.length + 1;
+    let Matriz =  new Array(Filas);
+
+    for(let i = 0; i < Filas; i++){
+        Matriz[i] = new Array(Columnas)
+    }
+    
+//Llenar primeras celdas 
+    for(let i = 1; i < Columnas; i++){
+        Matriz[0][i] = Mensaje.charAt(i - 1);
+    }
+
+    for(let i = 1; i < Filas; i++){
+        Matriz[i][0] = Clave.charAt(i - 1);
+    }
+
+
+//Llenar centro de la tabla
+    for(let i = 1; i < Filas; i++){
+        alert(Mensaje.charAt(i-1));
+        for(let j = 1; j < Columnas; j++){
+            Matriz[i][j] = CifrandoMatriz(Mensaje.charAt(j - 1), Clave.charAt(i - 1));
+        }
+    }
+
+    CrearTabla(Filas, Columnas, Matriz);
+}
+
+function CifrandoMatriz(CaracterM, CaracterC){
+    const Alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+    let indiceMensaje = 0;
+    let indiceClave = 0;
+    let Caracter = "";
+
+        for(let j = 0; j < Alfabeto.length; j++){
+            if(CaracterM == Alfabeto.charAt(j)){
+                indiceMensaje = j;
+                break;
+            }    
+        }
+
+        for(let k = 0; k < Alfabeto.length; k++){
+            if(CaracterC == Alfabeto.charAt(k)){
+                indiceClave = k;
+                break;
+            }    
+        }
+
+    Indice = (indiceMensaje + indiceClave) % Alfabeto.length;
+    Caracter = Alfabeto.charAt(Indice);
+    return Caracter
+}
+
+function CrearTabla(filas, columnas, matriz){
+    const Filas = filas;
+    const Columnas = columnas;
+    
+    let tabla = document.querySelector('#Matriz tbody');
+
+    for(let i = 0; i < Filas; i++){
+        let nuevafila = document.createElement('tr');
+
+        for(let j = 0; j < Columnas; j++){
+            let nuevacolumna = document.createElement('td');
+            nuevacolumna.textContent = matriz[i][j];
+            nuevafila.appendChild(nuevacolumna);
+        }
+
+        tabla.appendChild(nuevafila);
+    }
 }
