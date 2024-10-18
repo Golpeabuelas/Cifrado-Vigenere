@@ -22,9 +22,9 @@
         <div class="Contenedor" id="Izquierda">
             <div class="Cifrando">
                 <form >
-                    <input type="text" placeholder="Mensaje para cifrar" name="Mensajes" id="Mensaje" required>
-                    <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" required>
-                    <input type="submit" value="Cifrar" onclick="CifrarMensaje(event)">
+                    <input type="text" placeholder="Mensaje para cifrar" name="Mensajes" id="Mensaje" class="inputs" required>
+                    <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" class="inputs" oninput="SoloLetras(this)" required>
+                    <input type="submit" value="Cifrar" onclick="CifrarMensaje(event)" class="inputs">
                 </form>
             </div>
         
@@ -32,9 +32,9 @@
         
             <div class="Descifrando">
                 <form>
-                    <input type="text" placeholder="Mensaje para descifrar" id="MensajeCifrado" name="Mensajes" required>
-                    <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" required>
-                    <input type="submit" value="Descifrar" onclick="DescifrarMensaje(event)">
+                    <input type="text" placeholder="Mensaje para descifrar" id="MensajeCifrado" name="Mensajes" class="inputs" required>
+                    <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" class="inputs" oninput="SoloLetras(this)" required>
+                    <input type="submit" value="Descifrar" onclick="DescifrarMensaje(event)" class="inputs">
                 </form>
             </div>
         </div>
@@ -47,7 +47,41 @@
                     </tbody>
                 </table>
 
-                <textarea name="Resultado" id="MostrarCifrado"></textarea>
+                <textarea name="Resultado" id="MostrarCifrado" readonly></textarea>
+
+                <table class="Pequenia" id="Abecedario">
+                    <tbody>
+                        <tr>
+                            <td class="Celda">A</td>
+                            <td class="Celda">B</td>
+                            <td class="Celda">C</td>
+                            <td class="Celda">D</td>
+                            <td class="Celda">E</td>
+                            <td class="Celda">F</td>
+                            <td class="Celda">G</td>
+                            <td class="Celda">H</td>
+                            <td class="Celda">I</td>
+                            <td class="Celda">J</td>
+                            <td class="Celda">K</td>
+                            <td class="Celda">L</td>
+                            <td class="Celda">M</td>
+                            <td class="Celda">N</td>
+                            <td class="Celda">Ñ</td>
+                            <td class="Celda">O</td>
+                            <td class="Celda">P</td>
+                            <td class="Celda">Q</td>
+                            <td class="Celda">R</td>
+                            <td class="Celda">S</td>
+                            <td class="Celda">T</td>
+                            <td class="Celda">U</td>
+                            <td class="Celda">V</td>
+                            <td class="Celda">W</td>
+                            <td class="Celda">X</td>
+                            <td class="Celda">Y</td>
+                            <td class="Celda">Z</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
