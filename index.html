@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cifrado Vigenere</title>
 
     <link rel="stylesheet" href="styles.css">
-    <script src="funcionalidad.js"></script>
+    <script type="module" src="./Funciones.js" defer></script>
+    <script type="module" src="./CifrarMensaje.js" defer></script>
+    <script type="module" src="./DescifrarMensaje.js" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,20 +23,18 @@
     <div class="Contenido">
         <div class="Contenedor" id="Izquierda">
             <div class="Cifrando">
-                <form >
+                <form id="EnviarCifrado">
                     <input type="text" placeholder="Mensaje para cifrar" name="Mensajes" id="Mensaje" class="inputs" required>
-                    <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" class="inputs" oninput="SoloLetras(this)" required>
-                    <input type="submit" value="Cifrar" onclick="CifrarMensaje(event)" class="inputs">
+                    <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" class="inputs" required>
+                    <input type="submit" value="Cifrar" class="inputs">
                 </form>
             </div>
         
-            
-        
             <div class="Descifrando">
-                <form>
+                <form id="EnviarDescifrado">
                     <input type="text" placeholder="Mensaje para descifrar" id="MensajeCifrado" name="Mensajes" class="inputs" required>
-                    <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" class="inputs" oninput="SoloLetras(this)" required>
-                    <input type="submit" value="Descifrar" onclick="DescifrarMensaje(event)" class="inputs">
+                    <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" class="inputs" required>
+                    <input type="submit" value="Descifrar" class="inputs">
                 </form>
             </div>
         </div>
