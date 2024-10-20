@@ -24,16 +24,16 @@
         <div class="Contenedor" id="Izquierda">
             <div class="Cifrando">
                 <form id="EnviarCifrado">
-                    <input type="text" placeholder="Mensaje para cifrar" name="Mensajes" id="Mensaje" class="inputs" required>
-                    <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" class="inputs" required>
+                    <input type="text" placeholder="Mensaje para cifrar" name="Mensajes" id="Mensaje" class="inputs Borrable" required>
+                    <input type="text" placeholder="Clave para cifrar" id="ClaveCifrar" name="Clave" class="inputs Borrable" required>
                     <input type="submit" value="Cifrar" class="inputs">
                 </form>
             </div>
         
             <div class="Descifrando">
                 <form id="EnviarDescifrado">
-                    <input type="text" placeholder="Mensaje para descifrar" id="MensajeCifrado" name="Mensajes" class="inputs" required>
-                    <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" class="inputs" required>
+                    <input type="text" placeholder="Mensaje para descifrar" id="MensajeCifrado" name="Mensajes" class="inputs Borrable" required>
+                    <input type="text" placeholder="Clave con la que se cifró" id="ClaveDescifrar" name="Clave" class="inputs Borrable" required>
                     <input type="submit" value="Descifrar" class="inputs">
                 </form>
             </div>
@@ -52,36 +52,39 @@
                 <table class="Pequenia" id="Abecedario">
                     <tbody>
                         <tr>
-                            <td class="Celda">A</td>
-                            <td class="Celda">B</td>
-                            <td class="Celda">C</td>
-                            <td class="Celda">D</td>
-                            <td class="Celda">E</td>
-                            <td class="Celda">F</td>
-                            <td class="Celda">G</td>
-                            <td class="Celda">H</td>
-                            <td class="Celda">I</td>
-                            <td class="Celda">J</td>
-                            <td class="Celda">K</td>
-                            <td class="Celda">L</td>
-                            <td class="Celda">M</td>
-                            <td class="Celda">N</td>
-                            <td class="Celda">Ñ</td>
-                            <td class="Celda">O</td>
-                            <td class="Celda">P</td>
-                            <td class="Celda">Q</td>
-                            <td class="Celda">R</td>
-                            <td class="Celda">S</td>
-                            <td class="Celda">T</td>
-                            <td class="Celda">U</td>
-                            <td class="Celda">V</td>
-                            <td class="Celda">W</td>
-                            <td class="Celda">X</td>
-                            <td class="Celda">Y</td>
-                            <td class="Celda">Z</td>
+                            <td class="Celda" value="A">A</td>
+                            <td class="Celda Borrable">B</td>
+                            <td class="Celda Borrable">C</td>
+                            <td class="Celda Borrable">D</td>
+                            <td class="Celda Borrable">E</td>
+                            <td class="Celda Borrable">F</td>
+                            <td class="Celda Borrable">G</td>
+                            <td class="Celda Borrable">H</td>
+                            <td class="Celda Borrable">I</td>
+                            <td class="Celda Borrable">J</td>
+                            <td class="Celda Borrable">K</td>
+                            <td class="Celda Borrable">L</td>
+                            <td class="Celda Borrable">M</td>
+                            <td class="Celda Borrable">N</td>
+                            <td class="Celda Borrable">Ñ</td>
+                            <td class="Celda Borrable">O</td>
+                            <td class="Celda Borrable">P</td>
+                            <td class="Celda Borrable">Q</td>
+                            <td class="Celda Borrable">R</td>
+                            <td class="Celda Borrable">S</td>
+                            <td class="Celda Borrable">T</td>
+                            <td class="Celda Borrable">U</td>
+                            <td class="Celda Borrable">V</td>
+                            <td class="Celda Borrable">W</td>
+                            <td class="Celda Borrable">X</td>
+                            <td class="Celda Borrable">Y</td>
+                            <td class="Celda Borrable">Z</td>
                         </tr>
                     </tbody>
                 </table>
+                <form>
+                    <input type="button" value="Borrar" class="inputs" id="Borrar">
+                </form>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ document.getElementById('ClaveDescifrar').addEventListener('input', function() {
     SoloLetras(this);
 });
 
-export function SoloLetras(input){
+function SoloLetras(input){
     input.value = input.value.replace(/[^a-zA-Z]/g, "");
 }
 
@@ -38,6 +38,10 @@ export function CrearTabla(filas, columnas, matriz){
     const Filas = filas;
     const Columnas = columnas;
     
+    let table = document.querySelector('#Matriz tbody');
+    table.innerHTML = '';
+    
+    console.log("ingaturoña ya va a crear la tabla")
     let tabla = document.querySelector('#Matriz tbody');
 
     for(let i = 0; i < Filas; i++){
@@ -50,6 +54,28 @@ export function CrearTabla(filas, columnas, matriz){
         }
 
         tabla.appendChild(nuevafila);
+    }
+}
+
+document.getElementById('Borrar').addEventListener('click', function(event) {
+    Borrar();
+});
+
+function Borrar(){
+    let Inputs = document.getElementsByClassName("Borrable");
+    
+    let table = document.querySelector('#Matriz tbody');
+    table.innerHTML = '';
+
+    for(let i = 0; i < Inputs.length; i++){
+        Inputs[i].value = Inputs[i].defaultValue;
+    }
+
+    const Celdas = document.getElementsByClassName('Celda')
+    
+    for(let i = 0; i < Celdas.length; i++){
+        Celdas[i].style.backgroundColor = '#E3C7A1'; 
+        Celdas[i].style.color = '#4B2E1F';
     }
 }
 
