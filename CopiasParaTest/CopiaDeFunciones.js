@@ -1,44 +1,70 @@
-import { IgualarLongitudes } from "./Funciones.js";
-import { CrearTabla } from "./Funciones.js";
-import { Colorear } from "./Innecesario.js"
+async function CifrarMensaje(mensaje, clave){
+    const Mensaje = mensaje;
+    const Clave = clave
+    const Estatus = true;
 
-export async function IdentarMensaje(mensajes, clave, estatus){
-    let table = document.querySelector('#Matriz tbody');
-    table.innerHTML = '';
+    const Nuevo = await IdentarMensaje(Mensaje, Clave, Estatus);
 
-    document.getElementById('MostrarCifrado').value = "";
+    return Nuevo;
+}
 
+async function DescifrarMensaje(mensaje, clave){
+    const Mensaje = mensaje;
+    const Clave = clave
+    const Estatus = false;
+    const Nuevo = await IdentarMensaje(Mensaje, Clave, Estatus);
+
+    return Nuevo;
+}
+
+function IgualarLongitudes(mensaje, clave){
+    const Mensaje = mensaje.trim();
+    let Clave = clave;
+    
+    let auxiliar = "";
+
+    for (let i = 0; i < Mensaje.length; i++) {
+        for(let j = 0; j < Clave.length; j++){
+            auxiliar = auxiliar + Clave.charAt(j);
+            
+            if(auxiliar.length == Mensaje.length){
+                break;
+            } 
+        }
+
+        if(auxiliar.length == (Mensaje.length)){
+            Clave = auxiliar;
+            break;
+        } 
+    }
+
+    return Clave;
+}
+
+async function IdentarMensaje(mensajes, clave, estatus){
     const Mensaje = mensajes;
     const Estatus = estatus;
     const Palabras = Mensaje.split(" ");
-    const Actualizar = true;
 
     let mensaje = "";
 
     for(let i = 0; i < Palabras.length; i++){
         let Clave = IgualarLongitudes(Palabras[i], clave);
 
-        console.log(Clave)
         if(Palabras[i] != ""){ 
-            table.innerHTML = '';
-            
-            MostrarMatriz(Palabras[i], Clave, Estatus);
-
-            let temporal = await ProcesarMensaje(Palabras[i], Clave, Estatus, Actualizar) + " ";
+            let temporal = await ProcesarMensaje(Palabras[i], Clave, Estatus) + " ";
             mensaje = mensaje + temporal;
         }
     }
-    document.getElementById('MostrarCifrado').value = mensaje;
 
     return mensaje
 }
 
-async function ProcesarMensaje(mensaje, clave, estatus, actualizar){
+async function ProcesarMensaje(mensaje, clave, estatus){
     const Alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
     const Mensaje = mensaje;
     const Clave = clave;
     const Estatus = estatus;
-    const Actualizar = actualizar;
 
     let Cifrado = "";
     let Indice = 0;
@@ -63,7 +89,7 @@ async function ProcesarMensaje(mensaje, clave, estatus, actualizar){
     
             if(Estatus == true){
                 Indice = (indiceMensaje + indiceClave) % Alfabeto.length;
-            } else{
+            } else{ 
                 Indice = (indiceMensaje - indiceClave + Alfabeto.length) % Alfabeto.length;
             }
             
@@ -71,11 +97,6 @@ async function ProcesarMensaje(mensaje, clave, estatus, actualizar){
         } else{
             Cifrado = Cifrado + Mensaje.charAt(i);
         }
-        
-        if(Actualizar == true){
-            await Colorear(Cifrado.charAt(i))
-            document.getElementById('MostrarCifrado').value =  document.getElementById('MostrarCifrado').value + Cifrado.charAt(i);
-        } 
     }
 
     return Cifrado;
@@ -92,6 +113,8 @@ async function MostrarMatriz(mensaje, clave, estatus){
     for(let i = 0; i < Filas; i++){
         Matriz[i] = new Array(Columnas)
     }
+
+    Matriz[0][0] = null;
     
     for(let i = 1; i < Columnas; i++){
         Matriz[0][i] = Mensaje.charAt(i - 1);
@@ -107,5 +130,17 @@ async function MostrarMatriz(mensaje, clave, estatus){
         }
     }
 
-    CrearTabla(Filas, Columnas, Matriz);
+    
+    return Matriz;
 }
+
+module.exports = {
+    CifrarMensaje,
+    DescifrarMensaje,
+    IgualarLongitudes,
+    IdentarMensaje,
+    ProcesarMensaje,
+    MostrarMatriz
+}
+
+
